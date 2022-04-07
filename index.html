@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funciones</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
+
+      body {
+        background-color: #d4d4d4;
+      }
+
+      h1 {
+        text-align: center;
+        color: #683ca0;
+        font-family: "Didact Gothic", sans-serif;
+      }
+
+      button {
+        background-color: #bfa8dd;
+        font-family: "Didact Gothic", sans-serif;
+        font-size: 18px;
+        border-radius: 5px;
+        border: thick solid #bfa8dd;
+        width: 280px;
+        height: 55px;
+      }
+
+      #article1 {
+        width: 33%;
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+      }
+
+      #article2 {
+        width: 33%;
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+      }
+
+      #article3 {
+        width: 33%;
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Biblioteca de ejercicios</h1>
+    <br />
+    <article id="article1">
+      <button onclick="banco()">Banco de Alemania</button>
+      <br /><br />
+      <button onclick="notasMm()">Notas mayores y menores</button>
+      <br /><br />
+      <button onclick="arrayClase()">Verificacion de aprendices</button>
+      <br /><br />
+      <button onclick="vocales()">Vocales</button>
+      <br /><br />
+      <button onclick="empresa()">Empresa</button>
+      <br /><br />
+      <button onclick="mercancia()">Mercancia</button>
+      <br /><br />
+      <button onclick="tienda()">Ventas tiendas</button>
+      <br /><br />
+    </article>
+
+    <article id="article2">
+      <button onclick="descuento()">Descuento de compras por meses</button>
+      <br /><br />
+      <button onclick="maquina()">Maquina expendedora</button>
+      <br /><br />
+      <button onclick="promedioA()">Promedio aprendices</button>
+      <br /><br />
+      <button onclick="media()">Media de 3 numeros</button>
+      <br /><br />
+      <button onclick="areaT()">Area de un triangulo</button>
+      <br /><br />
+      <button onclick="materia()">Porcentajes materia</button>
+      <br /><br />
+      <button onclick="sueldo()">Calcular sueldo</button>
+      <br /><br />
+    </article>
+
+    <article id="article3">
+      <button onclick="ecuacion()">Resolver ecuacion</button>
+      <br /><br />
+      <button onclick="parImpar()">Numero par o impar</button>
+      <br /><br />
+      <button onclick="sumaOtro()">
+        Saber si un numero es la suma del otro
+      </button>
+      <br /><br />
+      <button onclick="signos()">Signos zodiacales</button>
+      <br /><br />
+      <button onclick="categoria()">Categorias sueldos</button>
+      <br /><br />
+      <button onclick="libreria()">Libreria</button>
+      <br /><br />
+      <button onclick="operacionesSignos()">Signos de operacion</button>
+      <br /><br />
+    </article>
+
+    <script>
+      function banco() {
+        alert(
+          "El banco internacional de alemania nos ha contratado para el manejo de una cuenta de ahorros de un cliente, controlando los retiros y consignaciones del mismo. Realizar un algoritmo que le permita al usuario realizar N retiros y N consigniones de su cuenta de ahorros. Tener en cuenta que no se puede retirar mas del dinero que tengo en la cuenta y la apertura de la cuenta inicia en $500.000"
+        );
+
+        let condicion, saldoApertura, opciones, retiro, consignacion;
+        condicion = "1";
+        saldoApertura = 500000;
+
+        while (condicion == "1") {
+          opciones = prompt(
+            "Que operacion desea realizar: \n Marque 1 para retirar dinero \n Marque 2 para realizar una consignacion"
+          );
+
+          if (opciones == "1") {
+            retiro = parseInt(prompt("Ingrese el valor a retirar"));
+            if (retiro <= saldoApertura) {
+              saldoApertura = saldoApertura - retiro;
+              alert("Retiro exitoso \nSaldo actual: " + saldoApertura);
+            } else {
+              alert("Saldo insuficiente \nIntente de nuevo");
+            }
+          } else if (opciones == "2") {
+            consignacion = parseInt(prompt("Ingrese el valor a consignar"));
+            saldoApertura = saldoApertura + consignacion;
+            alert("Consignacion exitoso \nSaldo actual: " + saldoApertura);
+          } else {
+            alert("El valor ingresado es nulo, intente de nuevo");
+          }
+
+          condicion = prompt(
+            "Marque 1 para realizar otra consignacion o retiro \nMarque 2 para finalizar"
+          );
+        }
+      }
+
+      function notasMm() {
+        alert(
+          "Realizar un algormitmo , que capture 10 notas y 10 nombres , me permita identificar el promedio de ellas, mostrar al final la nota mayor y el nombre del aprendiz , y la nota menor y el nombre del aprendiz."
+        );
+
+        let notas,
+          nombres,
+          acomulador = 0,
+          promedio,
+          nota = 0,
+          notaA = 15,
+          acomuladorNombre,
+          acomuladorNombre1;
+
+        for (let i = 1; i <= 10; i++) {
+          nombres = prompt("Ingrese su nombre");
+          notas = parseFloat(prompt("Digite su nota"));
+          if (notas > nota) {
+            nota = notas;
+            acomuladorNombre = nombres;
+          }
+          if (notas < notaA) {
+            notaA = notas;
+            acomuladorNombre1 = nombres;
+          }
+          acomulador = acomulador + notas;
+        }
+        promedio = acomulador / 10;
+        alert(
+          "El promedio total de todas las notas es: " +
+            promedio.toFixed(1) +
+            "\nLa nota mayor es: " +
+            nota +
+            "\nEl nombre del aprendiz es: " +
+            acomuladorNombre +
+            "\nLa nota menor es: " +
+            notaA +
+            "\nEl nombre del aprendiz es: " +
+            acomuladorNombre1
+        );
+      }
+
+      function arrayClase() {
+        let nombres,
+          notaD,
+          ciclo = "si",
+          cicloV = "si",
+          verificar,
+          array_nombre = [],
+          array_notas = [];
+
+        while (ciclo == "si") {
+          nombres = prompt("Ingrese su nombre");
+          array_nombre.push(nombres);
+          notaD = parseFloat(prompt("Digite su nota final"));
+          array_notas.push(notaD);
+          ciclo = prompt("Desea ingresar otro aprendiz \nsi o no");
+
+          if (ciclo == "no") {
+            while (cicloV == "si") {
+              verificar = prompt(
+                "Ingrese el numero de aprendiz que quiere verificar"
+              );
+              array_nombre[verificar] = alert(
+                "El nombre es : " +
+                  array_nombre[verificar - 1] +
+                  "\nLa nota es : " +
+                  array_notas[verificar - 1]
+              );
+              cicloV = prompt(
+                "Escriba si para verificar otro aprendiz  \nEscriba no para salir"
+              );
+            }
+          }
+        }
+      }
+
+      function vocales() {
+        alert(
+          "Hacer un programa donde se ingrese una letra y se determine si es una vocal."
+        );
+        let letra = prompt("Ingrese una letra");
+        if (
+          letra == "a" ||
+          letra == "e" ||
+          letra == "i" ||
+          letra == "o" ||
+          letra == "u"
+        ) {
+          alert("La letra ingresada es una VOCAL");
+        } else {
+          alert("La letra ingresada NO es una VOCAL");
+        }
+      }
+
+      function empresa() {
+        alert(
+          "Una empresa tiene el registro de las horas que trabaja diariamente un empleado durante la semana (seis días) y requiere determinar el total de éstas, así como el sueldo que recibirá por las horas trabajadas."
+        );
+
+        let horasT1 = parseInt(
+          prompt("Ingrese cuantas horas trabajo el primer dia")
+        );
+        let horasT2 = parseInt(
+          prompt("Ingrese cuantas horas trabajo el segundo dia")
+        );
+        let horasT3 = parseInt(
+          prompt("Ingrese cuantas horas trabajo el tercer dia")
+        );
+        let horasT4 = parseInt(
+          prompt("Ingrese cuantas horas trabajo el cuarto dia")
+        );
+        let horasT5 = parseInt(
+          prompt("Ingrese cuantas horas trabajo el quinto dia")
+        );
+        let horasT6 = parseInt(
+          prompt("Ingrese cuantas horas trabajo el sexto dia")
+        );
+
+        let totalHoras =
+          horasT1 + horasT2 + horasT3 + horasT4 + horasT5 + horasT6;
+
+        let pagoHoras = parseInt(prompt("Ingrese el pago por hora"));
+        totalPagoHoras = totalHoras * pagoHoras;
+
+        alert("El total de horas trabajadas es: " + totalHoras);
+        alert("Su sueldo en total es " + totalPagoHoras);
+      }
+
+      function mercancia() {
+        alert(
+          "Una empresa de envío de mercancías tiene un plan de tarifas y descuentos sobre el valor del envío de mercancía de sus clientes: \n Tarifas:\n -Si el peso de la mercancía es inferior a 100 kg, la tarifa para el envío de ésta es de 20.000 pesos.\n -Si el peso de la mercancía está entre 100 y 150 kg, la tarifa para el envío de ésta es de 25.000 pesos.\n -Si el peso de la mercancía es superior a 150 kg y menor o igual a 200 kg, la tarifa para el envío de ésta es de 30.000 Pesos. \n -Si el peso de la mercancía es superior a 200 kg, la tarifa es de 35.000 pesos y además por cada 10 kg adicionales se paga 2.000 pesos. \n Descuentos:\n -Si el valor de la mercancía está entre 300.000 y 600.000 pesos se hace un descuento del 10% sobre el valor del envío.\n -Si el valor de la mercancía es superior a 600.000 pero menor o igual a 1.000.000 de pesos se hace un descuento del 20% sobre el valor del envío.\n -Si el valor de la mercancía es superior a 1.000.000 se hace un descuento del 30% sobre el valor del envío.\n"
+        );
+
+        let pesoMercancia = parseInt(prompt("Ingrese el peso de su mercancia"));
+        let valorMercancia = parseInt(
+          prompt("Ingrese el valor de la mercancia")
+        );
+        let tarifa, descuento, pagoFinal;
+
+        if (pesoMercancia < 100) {
+          tarifa = 20000;
+        } else if (pesoMercancia >= 100 && pesoMercancia <= 150) {
+          tarifa = 25000;
+        } else if (pesoMercancia > 150 && pesoMercancia <= 200) {
+          tarifa = 30000;
+        } else if (pesoMercancia > 200) {
+          tarifa = 35000 + ((pesoMercancia - 200) / 10) * 2000;
+        }
+
+        if (valorMercancia < 300000) {
+          pagoFinal = tarifa;
+          alert("El valor total a pagar con descuento es: " + pagoFinal);
+        } else if (valorMercancia >= 300000 || valorMercancia <= 600000) {
+          descuento = tarifa * 0.1;
+          pagoFinal = tarifa - descuento;
+          alert("El valor total a pagar con descuento es: " + pagoFinal);
+        } else if (valorMercancia > 600000 || valorMercancia <= 1000000) {
+          descuento = tarifa * 0.2;
+          pagoFinal = tarifa - descuento;
+          alert("El valor total a pagar con descuento es: " + pagoFinal);
+        } else if (valorMercancia >= 1000000) {
+          descuento = tarifa * 0.3;
+          pagoFinal = tarifa - descuento;
+          alert("El valor total a pagar con descuento es: " + pagoFinal);
+        }
+      }
+
+      function tienda() {
+        alert(
+          "Suponga que tiene una tienda y desea registrar sus ventas por medio de una computadora. Diseñe un algoritmo y que capture de cada cliente: \na. El monto de la venta \nb. Calcule e imprima el IVA (19%) \nc. Calcule e imprima el total a pagar \nd. Capture la cantidad con que paga el cliente \ne. Calcule y muestre el cambio (las devueltas).\nAl final del día deberá imprimir la cantidad de dinero que debe haber en la caja."
+        );
+        let suma = 0;
+        let op = prompt(
+          "Bienvenido al sistema, para salir oprima 1 cuando pregunte si desea continuar, de lo contrario darle si"
+        );
+
+        while (op != 1) {
+          let monto = parseInt(prompt("Digite el monto de la venta"));
+          let iva = monto * 0.19;
+          let subt = monto - iva;
+          alert(
+            "subtotal: " +
+              subt +
+              "\n" +
+              "Iva:" +
+              iva +
+              "\n" +
+              "Total a pagar:" +
+              monto +
+              "\n"
+          );
+          let cPago = parseInt(prompt("Ingrese la cantidad con que paga"));
+          let cambio = cPago - monto;
+          alert("Su devuelta es: " + cambio);
+          suma = suma + monto;
+
+          op = prompt("Desea continuar?");
+        }
+        alert("total de la caja es " + suma);
+      }
+
+      function descuento() {
+        alert(
+          "Una tienda ofrece un descuento del 15% sobre el total de la compra durante el mes de octubre, septiembre y marzo.\na. Dado un mes y un valor, calcular cuál es la cantidad que se debe cobrar al cliente."
+        );
+        let mes = prompt("Ingrese el mes de compra");
+        let valor = prompt("Ingrese el valor de la compra");
+        let totalPagar, total;
+
+        if (mes == "octubre" || mes == "septiembre" || mes == "marzo") {
+          totalPagar = valor * 0.15;
+          total = valor - totalPagar;
+          alert("El valor total a pagar es: " + total);
+        } else {
+          alert("El valor total a pagar es: " + valor);
+        }
+      }
+
+      function maquina() {
+        alert(
+          "Realizar un algoritmo para una máquina expendedora de dulces, donde se debe solicitar el código del producto y el valor con el que se va pagar, el sistema debe calcular cuánto se le debe devolver al cliente los productos de la maquina son: \nGalletas Waffer 1500 GW \nMini Chips 1600 MC\nPapas de Limón 2500 PK \nChocorramo 1800 CH \nGalletas Oreo 900 GO"
+        );
+        let codigoProducto = prompt(
+          "Ingrese el codigo del producto \nTodo en mayuscula"
+        );
+        let valorPagar = parseInt(
+          prompt("Digite la cantidad con la que va a pagar")
+        );
+        let devuelta;
+
+        //Galletas Waffer
+        if (codigoProducto == "GW") {
+          if (valorPagar < 1500) {
+            alert("Valor ingresado insuficiente \nIntente de nuevo");
+          } else {
+            devuelta = valorPagar - 1500;
+            alert("Su devuelta es: " + devuelta);
+            alert("Entregar \nGALLETAS WAFFER");
+          }
+        }
+        //Mini Chips
+        if (codigoProducto == "MC") {
+          if (valorPagar < 1600) {
+            alert("Valor ingresado insuficiente \nIntente de nuevo");
+          } else {
+            devuelta = valorPagar - 1600;
+            alert("Su devuelta es: " + devuelta);
+            alert("Entregar \nMINI CHIPS");
+          }
+        }
+        //Papas de limon
+        if (codigoProducto == "PK") {
+          if (valorPagar < 2500) {
+            alert("Valor ingresado insuficiente \nIntente de nuevo");
+          } else {
+            devuelta = valorPagar - 2500;
+            alert("Su devuelta es: " + devuelta);
+            alert("Entregar \nPAPAS DE LIMON");
+          }
+        }
+        //Chocorramo
+        if (codigoProducto == "CH") {
+          if (valorPagar < 1800) {
+            alert("Valor ingresado insuficiente \nIntente de nuevo");
+          } else {
+            devuelta = valorPagar - 1800;
+            alert("Su devuelta es: " + devuelta);
+            alert("Entregar \nCHOCORRAMO");
+          }
+        }
+        //Galletas oreo
+        if (codigoProducto == "GO") {
+          if (valorPagar < 900) {
+            alert("Valor ingresado insuficiente \nIntente de nuevo");
+          } else {
+            devuelta = valorPagar - 900;
+            alert("Su devuelta es: " + devuelta);
+            alert("Entregar \nGALLETAS OREO");
+          }
+        }
+      }
+
+      function promedioA() {
+        alert(
+          "Calcular la nota de 3 aprendices, el nombre, y calcular el promedio final de la asignatura, basado en 3 notas: \na. 1 Nota 30% Ejercicio 1 \nb. 2 Nota 30% Ejercicio 2 \nc. 3 Nota 40% Evaluación \nMostrar en pantalla las notas del aprendiz, el promedio y su respectivo nombre "
+        );
+        //APRENDIZ 1
+        let nombre = prompt("Ingrese su nombre");
+        let nota1 = parseFloat(prompt("digite su nota n° 1"));
+        let nota2 = parseFloat(prompt("digite su nota n° 2"));
+        let nota3 = parseFloat(prompt("digite su nota n° 3"));
+        let promedio = nota1 * 0.3 + nota2 * 0.3 + (nota3 * 0.4) / 3;
+        alert(
+          "Sus notas ingresadas fueron:\n" + nota1 + "\n" + nota2 + "\n" + nota3
+        );
+        alert(nombre + " ,su promedio es: " + promedio.toFixed(1));
+
+        //APRENDIZ 2
+        let nombre_1 = prompt("Ingrese su nombre");
+        let nota1_1 = parseFloat(prompt("digite su nota n° 1"));
+        let nota2_1 = parseFloat(prompt("digite su nota n° 2"));
+        let nota3_1 = parseFloat(prompt("digite su nota n° 3"));
+        let promedio_1 = nota1_1 * 0.3 + nota2_1 * 0.3 + (nota3_1 * 0.4) / 3;
+        alert(
+          "Sus notas ingresadas fueron:\n" +
+            nota1_1 +
+            "\n" +
+            nota2_1 +
+            "\n" +
+            nota3_1
+        );
+        alert(nombre_1 + " ,su promedio es: " + promedio_1.toFixed(1));
+
+        //APRENDIZ 3
+        let nombre_2 = prompt("Ingrese su nombre");
+        let nota1_2 = parseFloat(prompt("digite su nota n° 1"));
+        let nota2_2 = parseFloat(prompt("digite su nota n° 2"));
+        let nota3_2 = parseFloat(prompt("digite su nota n° 3"));
+        let promedio_2 = nota1_2 * 0.3 + nota2_2 * 0.3 + (nota3_2 * 0.4) / 3;
+        alert(
+          "Sus notas ingresadas fueron:\n" +
+            nota1_2 +
+            "\n" +
+            nota2_2 +
+            "\n" +
+            nota3_2
+        );
+        alert(nombre_2 + " ,su promedio es: " + promedio_2.toFixed(1));
+      }
+
+      function media() {
+        alert(
+          "Diseñar un algoritmo para Calcular la media(promedio) de 3 números"
+        );
+
+        let numeroUno = parseInt(prompt("Ingrese el numero uno"));
+        let numeroDos = parseInt(prompt("Ingrese el numero dos"));
+        let numeroTres = parseInt(prompt("Ingrese el numero tres"));
+        let media;
+        media = (numeroUno + numeroDos + numeroTres) / 3;
+        alert("La media de los tres numeros es: " + media);
+      }
+
+      function areaT() {
+        alert(
+          "Diseñar un algoritmo para conocer el área de un triángulo, sabiendo que la fórmula es Base * Altura dividido en 2"
+        );
+
+        let base = parseInt(prompt("Ingrese la base del triángulo"));
+        let altura = parseInt(prompt("Ingrese la altura del triángulo"));
+        let area;
+        area = (base * altura) / 2;
+        alert("La area del triángulo es: " + area);
+      }
+
+      function materia() {
+        alert(
+          "Diseñar un algoritmo para calcular el promedio final de la materia de algoritmos. Dicha calificación se compone de los siguientes porcentajes. \na. 55% -----del promedio final de sus calificaciones parciales (3 Notas) \nb. 30% ----- de la calificación de una evaluación (1 Nota) \nc. 15% ----- de la calificación de un trabajo final (1 Nota)"
+        );
+
+        let nota1 = parseFloat(prompt("Digite su calificacion numero uno"));
+        let nota2 = parseFloat(prompt("Digite su calificacion numero dos"));
+        let nota3 = parseFloat(prompt("Digite su calificacion numero tres"));
+
+        let notaEvaluacion = parseFloat(
+          prompt("Digite su calificacion de la evaluacion")
+        );
+
+        let notaTFinal = parseFloat(
+          prompt("Digite su calificacion del trabajo final")
+        );
+
+        let promedioN, promedioP, porcentajeE, porcentajeTF, promedioFinal;
+        promedioN = (nota1 + nota2 + nota3) / 3;
+
+        promedioP = promedioN * 0.55;
+
+        porcentajeE = notaEvaluacion * 0.3;
+
+        porcentajeTF = notaTFinal * 0.15;
+
+        promedioFinal = promedioP + porcentajeE + porcentajeTF;
+
+        alert(
+          "El promedio final de la materia de algoritmos es: " +
+            promedioFinal.toFixed(1)
+        );
+      }
+
+      function sueldo() {
+        alert(
+          "Diseñar un algoritmo para Calcular el sueldo de un empleado dados como datos de entrada: el nombre, hrs. De trabajo y el pago en horas "
+        );
+
+        let nombre = prompt("Ingrese su nombre");
+        let horasTrabajo = parseInt(
+          prompt("Ingrese el numero de horas que trabaja")
+        );
+        let pagoHoras = parseInt(prompt("Ingrese el pago en horas"));
+        let salario;
+        salario = pagoHoras * horasTrabajo;
+        alert("Su sueldo señor@ " + nombre + " es: " + salario);
+      }
+
+      function ecuacion() {
+        alert(
+          "Elaborar un algoritmo que obtenga e imprima el valor de Y a partir de la ecuación. Y= 3*X2+ 7X – 15"
+        );
+
+        let X = parseInt(prompt("Ingrese el valor de X"));
+        let Y;
+        Y = 3 * X * 2 + 7 * X - 15;
+        alert("El valor de Y es: " + Y);
+      }
+
+      function parImpar() {
+        alert(
+          "Elaborar un algoritmo para leer un número y determinar si es par o impar"
+        );
+
+        let numero = parseInt(prompt("Digite un numero"));
+        if (numero % 2 == 0) {
+          alert("Es un numero par");
+        } else {
+          alert("Es un numero impar");
+        }
+      }
+
+      function sumaOtro() {
+        alert(
+          "Elaborar un algoritmo para leer 3 números y determinar si uno es la suma de los otros dos."
+        );
+
+        let num1 = parseInt(prompt("Digite el numero uno"));
+        let num2 = parseInt(prompt("Digite el numero dos"));
+        let num3 = parseInt(prompt("Digite el numero tres"));
+
+        if (num1 + num2 == num3) {
+          alert(
+            "El numero " +
+              num3 +
+              " es la suma de los otros dos numeros ingresados"
+          );
+        } else if (num1 + num3 == num2) {
+          alert(
+            "El numero " +
+              num2 +
+              " es la suma de los otros dos numeros ingresados"
+          );
+        } else if (num2 + num3 == num1) {
+          alert(
+            "El numero " +
+              num1 +
+              " es la suma de los otros dos numeros ingresados"
+          );
+        } else {
+          alert("Ninguno es la suma de los otros dos numeros");
+        }
+      }
+
+      function signos() {
+        alert(
+          "Elaborar un algoritmo para leer la fecha de nacimiento de una persona y muestre su signo zodiacal."
+        );
+
+        let dia = parseInt(prompt("Ingrese su dia de nacimiento"));
+        let mes = prompt("Ingrese su mes de nacimiento. \n Todo en minuscula");
+
+        if (
+          (mes == "marzo" && dia >= 21 && dia <= 31) ||
+          (mes == "abril" && dia >= 1 && dia <= 19)
+        ) {
+          alert("Su signo zodiacal es ARIES");
+        } else if (
+          (mes == "abril" && dia >= 20 && dia <= 31) ||
+          (mes == "mayo" && dia >= 1 && dia <= 21)
+        ) {
+          alert("Su signo zodiacal es TAURO");
+        } else if (
+          (mes == "mayo" && dia >= 21 && dia <= 31) ||
+          (mes == "junio" && dia >= 1 && dia <= 20)
+        ) {
+          alert("Su signo zodiacal es GEMINIS");
+        } else if (
+          (mes == "junio" && dia >= 21 && dia <= 31) ||
+          (mes == "julio" && dia >= 1 && dia <= 22)
+        ) {
+          alert("Su signo zodiacal es CANCER");
+        } else if (
+          (mes == "julio" && dia >= 23 && dia <= 31) ||
+          (mes == "agosto" && dia >= 1 && dia <= 22)
+        ) {
+          alert("Su signo zodiacal es LEO");
+        } else if (
+          (mes == "agosto" && dia >= 23 && dia <= 31) ||
+          (mes == "septiembre" && dia >= 1 && dia <= 22)
+        ) {
+          alert("Su signo zodiacal es VIRGO");
+        } else if (
+          (mes == "septiembre" && dia >= 23 && dia <= 31) ||
+          (mes == "octubre" && dia >= 1 && dia <= 22)
+        ) {
+          alert("Su signo zodiacal es LIBRA");
+        } else if (
+          (mes == "octubre" && dia >= 23 && dia <= 31) ||
+          (mes == "noviembre" && dia >= 1 && dia <= 21)
+        ) {
+          alert("Su signo zodiacal es ESCORPIO");
+        } else if (
+          (mes == "noviembre" && dia >= 22 && dia <= 31) ||
+          (mes == "diciembre" && dia >= 1 && dia <= 21)
+        ) {
+          alert("Su signo zodiacal es SAGITARIO");
+        } else if (
+          (mes == "diciembre" && dia >= 22 && dia <= 31) ||
+          (mes == "enero" && dia >= 1 && dia <= 19)
+        ) {
+          alert("Su signo zodiacal es CAPRICORNIO");
+        } else if (
+          (mes == "enero" && dia >= 20 && dia <= 31) ||
+          (mes == "febrero" && dia >= 1 && dia <= 18)
+        ) {
+          alert("Su signo zodiacal es ACUARIO");
+        } else if (
+          (mes == "febrero" && dia >= 19 && dia <= 31) ||
+          (mes == "marzo" && dia >= 1 && dia <= 20)
+        ) {
+          alert("Su signo zodiacal es PISCIS");
+        }
+      }
+
+      function categoria() {
+        alert(
+          "Construir un algoritmo que lea la categoría y el sueldo de un trabajador, calcule el aumento correspondiente teniendo en cuenta la siguiente tabla"
+        );
+
+        let categoria = prompt(
+          "Ingrese la categoria a la que corresponde: \n pro \n medium \n noob"
+        );
+        let sueldo = parseInt(prompt("Digite su sueldo"));
+        let aumento;
+
+        if (categoria == "pro") {
+          aumento = sueldo * 0.2;
+          alert("Su aumento es: " + aumento);
+        } else if (categoria == "medium") {
+          aumento = sueldo * 0.1;
+          alert("Su aumento es: " + aumento);
+        } else if (categoria == "noob") {
+          aumento = sueldo * 0.2;
+          alert("Su aumento es: " + aumento);
+        }
+      }
+
+      function libreria() {
+        alert(
+          "En una librería se venden artículos con las siguientes condiciones: \nSí el cliente es de tipo 1 se le descuenta 30% \nSí el cliente es de tipo 2 se le descuenta 20% \nSí el cliente es de tipo 3 se le descuenta 10% \nEscribir un algoritmo que lea el nombre del cliente, tipo de cliente, precio. Calcule el pago final."
+        );
+
+        let nombre = prompt("Ingrese su nombre");
+        let tipo = prompt(
+          "Digite el tipo de cliente que es: \n tipo1 \n tipo2 \n tipo3"
+        );
+        let precio = parseInt(prompt("Digite el precio a pagar"));
+        let descuento;
+        let pagoFinal;
+
+        if (tipo == "tipo1") {
+          descuento = precio * 0.3;
+          pagoFinal = precio - descuento;
+          alert(nombre + ", el valor final a pagar es: " + pagoFinal);
+        } else if (tipo == "tipo2") {
+          descuento = precio * 0.2;
+          pagoFinal = precio - descuento;
+          alert(nombre + ", el valor final a pagar es: " + pagoFinal);
+        } else if (tipo == "tipo3") {
+          descuento = precio * 0.1;
+          pagoFinal = precio - descuento;
+          alert(
+            nombre + ", el valor final a pagar con descuento es: " + pagoFinal
+          );
+        }
+      }
+
+      function operacionesSignos() {
+        alert(
+          "Solicitar la introducción de 2 números reales y una operación (+, -, *, /), y mostrar por pantalla el resultado de la operación introducida."
+        );
+
+        let num1 = parseInt(prompt("Introduzca el primer numero"));
+        let num2 = parseInt(prompt("Introduzca el segundo numero"));
+        let operacion = prompt(
+          "Introduzca la operacion a realizar: \n Suma: + \n Resta: - \n Multiplicacion: * \n Division: /"
+        );
+        let resultado;
+
+        if (operacion == "+") {
+          resultado = num1 + num2;
+          alert("el resultado de la suma es: " + resultado);
+        } else if (operacion == "-") {
+          resultado = num1 - num2;
+          alert("el resultado de la resta es: " + resultado);
+        } else if (operacion == "*") {
+          resultado = num1 * num2;
+          alert("el resultado de la multiplicacion es: " + resultado);
+        } else if (operacion == "/") {
+          resultado = num1 / num2;
+          alert("el resultado de la division multiplicación es: " + resultado);
+        }
+      }
+    </script>
+  </body>
+</html>
